@@ -1,0 +1,1 @@
+document.getElementById("js").innerHTML = "This was done with js";
