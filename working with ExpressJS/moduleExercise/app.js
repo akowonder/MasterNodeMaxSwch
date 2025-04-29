@@ -4,7 +4,7 @@ const homePage = require("./routes/homepage.js");
 const userPage = require("./routes/userPage.js");
 const path = require("path");
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public"))); //makes the public folder accessible to my code
 
 app.use(homePage);
 app.use(userPage);
