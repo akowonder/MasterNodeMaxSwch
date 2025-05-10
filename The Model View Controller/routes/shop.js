@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 
-const productsController = require('../controllers/products');
+const shopController = require('../controllers/shop');
 
 // const rootDir = require('../util/path');
 // const adminData = require('./admin');
@@ -15,6 +15,10 @@ const router = express.Router();
 //   // the second argment to render, passes an object that will be accessible in our view file
 // }); // application logic has been moved to controllers folder 
 
-router.get('/', productsController.getProducts);
+router.get('/', shopController.getIndex);
+
+router.get("/cart", shopController.getCart );
+router.get("/products", shopController.getProducts);
+router.get("/checkout", shopController.getCheckout);
 
 module.exports = router;

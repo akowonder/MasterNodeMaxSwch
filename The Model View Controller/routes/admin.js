@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 
 //const rootDir = require('../util/path');
-const productsController = require('../controllers/products');
+const adminController = require('../controllers/admin');
 
 const router = express.Router();
 
@@ -14,7 +14,7 @@ const router = express.Router();
 //   //res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
 // }); //application logic has been moved to controllers folder (1)
 
-router.get('/add-product', productsController.getAddProduct); //replaces the b;lock of code above
+router.get('/add-product', adminController.getAddProduct); //replaces the b;lock of code above
 
 // /admin/add-product => POST
 // router.post('/add-product', (req, res, next) => {
@@ -22,7 +22,8 @@ router.get('/add-product', productsController.getAddProduct); //replaces the b;l
 //   res.redirect('/');
 // }); //(1)
 
-router.post('/add-product', productsController.postAddProduct); //replaces the b;lock of code above
+router.post('/add-product', adminController.postAddProduct); //replaces the b;lock of code above
+router.get("/products", adminController.getProducts)
 
 module.exports = router;
 //exports.products = products; //(0)
