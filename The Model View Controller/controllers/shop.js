@@ -1,6 +1,7 @@
 //all my product logic/controller-logic have moved here
 //following the MVC structure
 const Product = require('../models/product');
+const Cart = require("../models/cart")
 
 exports.getProducts = (req, res, next) => {
   Product.fetchAll((products) => {
@@ -11,6 +12,16 @@ exports.getProducts = (req, res, next) => {
     });
   });
 };
+
+exports.getProduct = (req, res) => {
+  const prodId = req.params.productId;
+  Product.findById(prodId, product => {
+    res.render("shop/product-detail", {
+      product: product,
+      pageTitle: product.title
+    });
+  });
+}
 
 exports.getIndex = (req, res, next) => {
   Product.fetchAll((products) => {
@@ -28,6 +39,14 @@ exports.getCart = (req, res, next) => {
       path: '/cart',
     });
 };
+
+exports.postCart = (req, res) => {
+  const prodId = req.body.productId;
+  Product.findById(prodId, (product) => {
+    Cart.addProduct(prodId, product.price);
+  });
+  res.redirect("/")
+}
 
 exports.getCheckout = (req, res, next) => {  
   res.render('shop/checkout', {

@@ -13,12 +13,21 @@ module.exports = class Product {
     }
 
     save () {
-        //const product
-        fs.writeFile(p, this, (err) => {
+        const product = [];
+        fs.readFile(p, "utf-8", (err, fileContent) => {
             if (err) {
-                console.log(err);
+                product.push(this);
+                fs.writeFile(p, JSON.stringify(product), (err) => {
+                    if (err) console.log(err);
+                })
             }
-        })
+
+            product.push(JSON.parse(fileContent));
+            product.push(this);
+            fs.writeFile(p, JSON.stringify(product), (err) => {
+                console.log(err);
+            })
+        });
     }
 
     // static fetchAll() {
