@@ -8,8 +8,10 @@ html(lang="en")
         title #{pageTitle}
         link(rel="stylesheet", href="/css/main.css") 
         block styles           
-    body   
+    body 
+        .backdrop  
         header.main-header
+            button#side-menu-toggle Menu
             nav.main-header__nav
                 ul.main-header__item-list
                     li.main-header__item
@@ -22,5 +24,19 @@ html(lang="en")
                         a(href="/admin/add-product", class=(path === '/admin/add-product' ? 'active' : '')) Add Product
                     li.main-header__item
                         a(href="/admin/products", class=(path === '/admin/products' ? 'active' : '')) Admin Products
+        
+        nav.mobile_nav 
+            ul.mobile-nav__item-list
+                li.main-nav__item
+                    a(href="/", class=(path === '/' ? 'active' : '')) Shop
+                li.main-nav__item
+                    a(href="/products", class=(path === '/products' ? 'active' : '')) Products
+                li.main-nav__item
+                    a(href="/cart", class=(path === '/cart' ? 'active' : '')) Cart
+                li.main-nav__item
+                    a(href="/admin/add-product", class=(path === '/admin/add-product' ? 'active' : '')) Add Product
+                li.main-nav__item
+                    a(href="/admin/products", class=(path === '/admin/products' ? 'active' : '')) Admin Products
                     
         block content
+        script(src="/js/main.js")

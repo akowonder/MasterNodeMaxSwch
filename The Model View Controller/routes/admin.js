@@ -1,9 +1,7 @@
 const path = require('path');
 const express = require('express');
-
 //const rootDir = require('../util/path');
 const adminController = require('../controllers/admin');
-
 const router = express.Router();
 
 //const products = []; //application data has been moved to models folder (0)
@@ -23,7 +21,14 @@ router.get('/add-product', adminController.getAddProduct); //replaces the b;lock
 // }); //(1)
 
 router.post('/add-product', adminController.postAddProduct); //replaces the b;lock of code above
-router.get("/products", adminController.getProducts)
+
+router.get("/products", adminController.getProducts);
+
+router.get("/edit-product/:productId", adminController.getEditProduct);
+
+router.post("/edit-product", adminController.postEditProduct);
+
+router.post("/delete-product", adminController.postDeleteProduct);
 
 module.exports = router;
 //exports.products = products; //(0)
